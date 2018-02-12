@@ -1,0 +1,36 @@
+mixin navLinkTab(link, name, disabled)
+  li.tab(class={disabled: disabled === true})
+    a(
+      href=link
+      class={active: name === current}
+    ) #{name}
+ 
+mixin navLink(link, name)
+  li
+    a(
+      href=link
+    ) #{name}
+
+
+nav.nav-extended
+  .nav-wrapper
+    a.brand-logo(href='index.html') Materialize/Gulp
+    a.sidenav-trigger(href='#' data-target='mobile-demo')
+      i.material-icons menu
+    ul#nav-mobile.right.hide-on-med-and-down
+      +navLink('#', 'Link 1')
+      +navLink('#', 'Link 2')
+      +navLink('#', 'Link 3')
+
+  .nav-content
+    ul.tabs.tabs-transparent
+      +navLinkTab('#','Tab 1',false)
+      +navLinkTab('#','Tab 2',false)
+      +navLinkTab('#','Tab 3',true)
+      +navLinkTab('#','Tab 4',false)
+
+ul.sidenav#mobile-demo
+  +navLink('#', 'Link 1')
+  +navLink('#', 'Link 2')
+  +navLink('#', 'Link 3')
+
